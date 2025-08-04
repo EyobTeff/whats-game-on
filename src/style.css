@@ -1,0 +1,47 @@
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #0B0C10;
+  color: #FFFFFF;
+}
+
+button {
+  background-color: #45A29E;
+  color: white;
+  border: none;
+  padding: 0.6em 1.2em;
+  border-radius: 6px;
+  margin: 0.5em;
+  cursor: pointer;
+}
+
+#app {
+  padding: 1rem;
+}
+h1, h2, h3 {
+  font-family: 'Oswald', sans-serif;
+  margin-bottom: 0.5rem;
+}
+
+section {
+  margin-top: 2rem;
+}
+
+.filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+#game-list, #featured-game {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.league-logo {
+  width: 40px;
+  height: auto;
+  margin-right: 8px;
+  vertical-align: middle;
+}
