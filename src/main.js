@@ -1,15 +1,4 @@
-console.log("What Game's On app is running...");
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("App loaded!");
-
-  // Dummy display until API is connected
-  document.getElementById("featured-game").textContent = "🏈 Eagles vs Chiefs at 7:30 PM";
-
-  document.getElementById("game-list").innerHTML = `
-    <div>🏀 Lakers vs Warriors - 6:00 PM</div>
-    <div>⚾ Yankees vs Red Sox - 3:00 PM</div>
-  `;
-});import { createGameCard } from './gamelist.js';
+import { createGameCard } from './gameList.js';
 
 console.log("What Game's On app is running...");
 
@@ -35,4 +24,3 @@ document.addEventListener("DOMContentLoaded", () => {
     gameList.appendChild(card);
   });
 });
-
