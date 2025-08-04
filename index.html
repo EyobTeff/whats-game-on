@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What Game's On?</title>
+  <script type="module" crossorigin src="/whats-game-on/assets/index-CxUJ8KfB.js"></script>
+  <link rel="stylesheet" crossorigin href="/whats-game-on/assets/index-LMkSh_YG.css">
+</head>
+<body>
+  <div id="app">
+    <h1>What Game's On?</h1>
+
+    <!-- Game of the Day -->
+    <section id="featured">
+      <h2>Game of the Day</h2>
+      <div id="featured-game">Loading...</div>
+    </section>
+
+    <!-- Filters -->
+    <section id="filters">
+      <h3>Filter by Sport</h3>
+      <div class="filter-group">
+        <button data-sport="NBA">NBA</button>
+        <button data-sport="NFL">NFL</button>
+        <button data-sport="MLB">MLB</button>
+        <button data-sport="NHL">NHL</button>
+      </div>
+
+      <h3>Filter by Time</h3>
+      <div class="filter-group">
+        <button data-time="morning">Morning</button>
+        <button data-time="afternoon">Afternoon</button>
+        <button data-time="evening">Evening</button>
+      </div>
+    </section>
+
+    <!-- Game Feed -->
+    <section id="game-feed">
+      <h2>Today's Games</h2>
+      <div id="game-list">Loading games...</div>
+    </section>
+
+    <!-- Example Game Card -->
+    <div class="game-card">
+      <img src="/assets/logos/nba.png" alt="NBA Logo" class="league-logo" />
+      <div class="game-info">
+        <h3>Lakers vs Warriors</h3>
+        <p>6:00 PM</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
