@@ -1,33 +1,78 @@
+/* ---------- Variables for consistent styling ---------- */
+:root {
+  --primary-color: #45A29E;
+  --primary-hover: #3A8D8A;
+  --text-color: #222;
+  --bg-light: #f9f9f9;
+  --border-color: #ccc;
+}
+
+/* ---------- Buttons ---------- */
 button {
-  background-color: #45A29E;
+  background-color: var(--primary-color);
   color: white;
   border: none;
   padding: 0.6em 1.2em;
   border-radius: 6px;
   margin: 0.5em;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 button:hover,
 button:focus {
-  background-color: #3A8D8A;
+  background-color: var(--primary-hover);
   outline: none;
   box-shadow: 0 0 0 3px rgba(69, 162, 158, 0.5);
 }
 
+/* ---------- Game Card ---------- */
 .game-card {
   display: flex;
   align-items: center;
-  background-color: #1F2833;
-  padding: 1rem;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--border-color);
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  margin-bottom: 10px;
+  background: var(--bg-light);
+  transition: transform 0.2s ease;
 }
 
-#game-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
+.game-card:hover {
+  transform: translateY(-3px);
+}
+
+.league-logo {
+  width: 40px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.teams {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: var(--text-color);
+}
+
+.game-meta {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+  .game-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .league-logo {
+    width: 50px;
+  }
+}
+/* Active filter button */
+button.active {
+  background-color: #2E7D7A;
+  box-shadow: 0 0 0 3px rgba(46, 125, 122, 0.5);
 }

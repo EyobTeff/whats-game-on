@@ -1,26 +1,91 @@
-import { createGameCard } from './gameList.js';
+import { createGameCard } from './gameCard.js';
 
-console.log("What Game's On app is running...");
+const API_KEY = "123"; // API key
+const LEAGUE_IDS = {
+  NBA: 4387,
+  NFL: 4391,
+  MLB: 4424,
+  NHL: 4380
+};
+
+let currentSport = "NBA";
+let currentTimeFilter = null;
 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("App loaded!");
 
-  // Set the featured game
-  document.getElementById("featured-game").textContent = "🏈 Eagles vs Chiefs at 7:30 PM";
-
-  // Sample games (replace this with fetched API data later)
-  const games = [
-    { league: "NBA", homeTeam: "Lakers", awayTeam: "Warriors" },
-    { league: "MLB", homeTeam: "Yankees", awayTeam: "Red Sox" },
-    { league: "NFL", homeTeam: "Eagles", awayTeam: "Cowboys" }
-  ];
-
-  const gameList = document.getElementById("game-list");
-  gameList.innerHTML = ""; // Clear old content
-
-  // Create and append each game card
-  games.forEach(game => {
-    const card = createGameCard(game);
-    gameList.appendChild(card);
-  });
+  setupFilterButtons();
+  fetchAndDisplayGames(currentSport);
 });
+
+function setupFilterButtons() {
+  // Sport filter
+  document.querySelectorAll("[data-sport]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      currentSport = btn.dataset.sport;
+      setActiveButton("[data-sport]", btn);
+      fetchAndDisplayGames(currentSport);
+    });
+  });
+
+  // Time filter
+  document.querySelectorAll("[data-time]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      currentTimeFilter = btn.dataset.time;
+      setActiveButton("[data-time]", btn);
+      fetchAndDisplayGames(currentSport, currentTimeFilter);
+    });
+  });
+}
+
+function setActiveButton(selector, activeBtn) {
+  document.querySelectorAll(selector).forEach(btn => btn.classList.remove("active"));
+  activeBtn.classList.add("active");
+}
+
+async function fetchAndDisplayGames(sport, timeFilter = null) {
+  const gameList = document.getElementById("game-list");
+  gameList.innerHTML = "Loading games...";
+
+  try {
+    const leagueId = LEAGUE_IDS[sport];
+    const res = await fetch(`https://www.thesportsdb.com/api/v1/json/${123}/eventsnextleague.php?id=${leagueId}`);
+    const data = await res.json();
+
+    let games = data.events || [];
+
+    // Apply time filter if selected
+    if (timeFilter) {
+      games = games.filter(game => {
+        const gameTime = new Date(`${game.dateEvent}T${game.strTime}`);
+        const hour = gameTime.getHours();
+
+        if (timeFilter === "morning") return hour < 12;
+        if (timeFilter === "afternoon") return hour >= 12 && hour < 17;
+        if (timeFilter === "evening") return hour >= 17;
+        return true;
+      });
+    }
+
+    gameList.innerHTML = ""; // Clear loading
+
+    if (games.length === 0) {
+      gameList.textContent = "No games found for this filter.";
+      return;
+    }
+
+    games.forEach(game => {
+      const gameInfo = {
+        league: sport,
+        homeTeam: game.strHomeTeam,
+        awayTeam: game.strAwayTeam
+      };
+      const card = createGameCard(gameInfo);
+      gameList.appendChild(card);
+    });
+
+  } catch (error) {
+    console.error("Failed to fetch games:", error);
+    gameList.innerHTML = "Unable to load game data.";
+  }
+}
