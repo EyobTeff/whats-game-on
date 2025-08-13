@@ -1,6 +1,5 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vite'
 
 export default defineConfig({
-  base: '/whats-game-on/',
-
-
+  base: '/whats-game-on/', // your repo name
+})

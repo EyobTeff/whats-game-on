@@ -1,9 +1,9 @@
 // src/gameCard.js
 
-import nbaLogo from './assets/logos/nba.svg';
-import nflLogo from './assets/logos/nfl.svg';
-import mlbLogo from './assets/logos/mlb.svg';
-import nhlLogo from './assets/logos/nhl.svg';
+import nbaLogo from './assets/logos/nba.svg.png';
+import nflLogo from './assets/logos/nfl.svg.png';
+import mlbLogo from './assets/logos/mlb.svg.png';
+import nhlLogo from './assets/logos/nhl.svg.png';
 
 const leagueLogos = { NBA: nbaLogo, NFL: nflLogo, MLB: mlbLogo, NHL: nhlLogo };
 
