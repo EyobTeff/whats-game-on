@@ -1,6 +1,6 @@
 import { createGameCard } from './gameCard.js';
 
-const API_KEY = "123"; // API key
+const API_KEY = "123"; 
 const LEAGUE_IDS = {
   NBA: 4387,
   NFL: 4391,
