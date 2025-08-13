@@ -4,12 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>What Game's On?</title>
-  <link rel="stylesheet" href="/src/style.css" />
+  <link rel="stylesheet" href="./src/style.css" />
 </head>
 <body>
   <div id="app">
-    
-    <!-- App Header -->
+    <!-- Header -->
     <header>
       <h1>What Game's On?</h1>
     </header>
@@ -44,7 +43,7 @@
       <!-- Game Feed -->
       <section id="game-feed" aria-labelledby="games-title">
         <h2 id="games-title">Today's Games</h2>
-        <div id="game-list" role="list" aria-live="polite">
+        <div id="game-container" role="list" aria-live="polite">
           Loading games...
         </div>
       </section>
@@ -54,13 +53,11 @@
     <footer>
       <p>&copy; <span id="year"></span> What Game's On? All rights reserved.</p>
     </footer>
-
   </div>
 
-  <!-- Main Script -->
-  <script type="module" src="/src/main.js"></script>
+  <!-- Scripts -->
+  <script type="module" src="./src/main.js"></script>
   <script>
-    // Auto-update footer year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
